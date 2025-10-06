@@ -3,7 +3,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>VibriNova — Digital Multiplex</title>
-  <meta name="description" content="All-in-one OTT-style experience: stream, tickets, food, chat, playzone."/>
+  <meta name="description" content="All-in-one OTT-style experience: stream, food, chat, tickets, playzone."/>
   <meta name="theme-color" content="#0b1220"/>
   <link rel="icon" href="img/logo.svg"/>
   <link rel="preconnect" href="https://unpkg.com"/>
@@ -16,64 +16,77 @@
 <header class="header">
   <div class="header-inner">
     <div class="brand">
+      <a href="profiles.html" class="only-mobile" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
       <img src="img/logo.svg" alt="logo"/>
       <div>
         <h1>VibriNova</h1>
-        <small>The Digital Multiplex</small>
+        <small class="text-muted">The Digital Multiplex</small>
       </div>
     </div>
-    <div class="text-muted" id="page-title"></div>
+    <div class="header-actions">
+      <a class="icon-btn only-mobile" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
+    </div>
   </div>
 </header>
 <nav class="nav">
-  <a href="index.html" data-page="stream" title="Stream">
-    <div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div>
-    <span class="label">Stream</span>
-  </a>
-  <a href="tickets.html" data-page="tickets" title="Tickets">
-    <div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div>
-    <span class="label">Tickets</span>
-  </a>
-  <a href="food.html" data-page="food" title="Food">
-    <div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div>
-    <span class="label">Food</span>
-  </a>
-  <a href="playzone.html" data-page="playzone" title="Play">
-    <div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div>
-    <span class="label">Play</span>
-  </a>
-  <a href="chat.html" data-page="chat" title="Chat">
-    <div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div>
-    <span class="label">Chat</span>
-  </a>
-  <a href="profiles.html" data-page="profiles" title="Profiles">
-    <div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div>
-    <span class="label">Profiles</span>
-  </a>
-  <a href="notifications.html" data-page="notifications" title="Alerts">
-    <div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div>
-    <span class="label">Alerts</span>
-  </a>
-  <a href="settings.html" data-page="settings" title="Settings">
-    <div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div>
-    <span class="label">Settings</span>
-  </a>
+  <div class="nav-group top">
+    <a href="index.html" data-page="stream" title="Stream">
+      <div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div>
+      <span class="label">Stream</span>
+    </a>
+    <a href="food.html" data-page="food" title="Food">
+      <div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div>
+      <span class="label">Food</span>
+    </a>
+    <a href="chat.html" data-page="chat" title="Chat">
+      <div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div>
+      <span class="label">Chat</span>
+    </a>
+    <a href="tickets.html" data-page="tickets" title="Tickets">
+      <div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div>
+      <span class="label">Tickets</span>
+    </a>
+    <a href="playzone.html" data-page="playzone" title="Play">
+      <div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div>
+      <span class="label">Play</span>
+    </a>
+  </div>
+  <div class="nav-group mid">
+    <a href="profiles.html" data-page="profiles" title="Profiles">
+      <div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div>
+      <span class="label">Profiles</span>
+    </a>
+  </div>
+  <div class="nav-group end">
+    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts">
+      <div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div>
+      <span class="label">Alerts</span>
+    </a>
+    <a href="settings.html" data-page="settings" title="Settings">
+      <div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div>
+      <span class="label">Settings</span>
+    </a>
+  </div>
 </nav>
 
 <main class="container">
   <div class="row">
     <h2>Stream</h2>
-    <form id="search-stream" class="searchbar"><input placeholder="Search movies & shows..."/></form>
+    <form id="search-stream" class="searchbar">
+      <input placeholder="Search movies & shows..."/>
+      <button type="button" class="icon-btn mic-btn" title="Voice search"><i data-lucide="mic"></i></button>
+      <button type="button" class="icon-btn clear-btn" title="Clear"><i data-lucide="x"></i></button>
+    </form>
   </div>
 
   <section class="card section">
     <div class="row">
       <div>
-        <h3 style="font-size:28px;margin:0 0 6px">VibriNova Picks</h3>
+        <h3 style="font-size:clamp(22px,3vw,32px);margin:0 0 6px">VibriNova Picks</h3>
         <div class="text-muted">Curated | Action | Adventure</div>
         <button class="btn-primary btn mt-2">Explore</button>
       </div>
-      <img src="https://picsum.photos/seed/vn-hero/520/260" alt="" style="border-radius:14px; display:none; width:240px; height:140px; object-fit:cover" onload="this.style.display='block'"/>
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="" style="border-radius:14px; display:none; width:260px; height:150px; object-fit:cover" onload="this.style.display='block'"/>
     </div>
   </section>
 
@@ -115,6 +128,24 @@
 <div class='poster card'><img src='https://picsum.photos/seed/tr12/800/600' alt=''>
       <div class='p'><div class='title'>Title 12</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
       <div class='mt-2'><button class="btn watch-btn" data-title="Title 12">Play</button> <button class="btn">Add</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tr13/800/600' alt=''>
+      <div class='p'><div class='title'>Title 13</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
+      <div class='mt-2'><button class="btn watch-btn" data-title="Title 13">Play</button> <button class="btn">Add</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tr14/800/600' alt=''>
+      <div class='p'><div class='title'>Title 14</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
+      <div class='mt-2'><button class="btn watch-btn" data-title="Title 14">Play</button> <button class="btn">Add</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tr15/800/600' alt=''>
+      <div class='p'><div class='title'>Title 15</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
+      <div class='mt-2'><button class="btn watch-btn" data-title="Title 15">Play</button> <button class="btn">Add</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tr16/800/600' alt=''>
+      <div class='p'><div class='title'>Title 16</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
+      <div class='mt-2'><button class="btn watch-btn" data-title="Title 16">Play</button> <button class="btn">Add</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tr17/800/600' alt=''>
+      <div class='p'><div class='title'>Title 17</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
+      <div class='mt-2'><button class="btn watch-btn" data-title="Title 17">Play</button> <button class="btn">Add</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tr18/800/600' alt=''>
+      <div class='p'><div class='title'>Title 18</div><div class='text-muted' style='font-size:12px'>Action • 2024</div>
+      <div class='mt-2'><button class="btn watch-btn" data-title="Title 18">Play</button> <button class="btn">Add</button></div></div></div>
   </div>
 </main>
 </body></html>

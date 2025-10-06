@@ -3,7 +3,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>VibriNova — Digital Multiplex</title>
-  <meta name="description" content="All-in-one OTT-style experience: stream, tickets, food, chat, playzone."/>
+  <meta name="description" content="All-in-one OTT-style experience: stream, food, chat, tickets, playzone."/>
   <meta name="theme-color" content="#0b1220"/>
   <link rel="icon" href="img/logo.svg"/>
   <link rel="preconnect" href="https://unpkg.com"/>
@@ -16,57 +16,110 @@
 <header class="header">
   <div class="header-inner">
     <div class="brand">
+      <a href="profiles.html" class="only-mobile" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
       <img src="img/logo.svg" alt="logo"/>
       <div>
         <h1>VibriNova</h1>
-        <small>The Digital Multiplex</small>
+        <small class="text-muted">The Digital Multiplex</small>
       </div>
     </div>
-    <div class="text-muted" id="page-title"></div>
+    <div class="header-actions">
+      <a class="icon-btn only-mobile" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
+    </div>
   </div>
 </header>
 <nav class="nav">
-  <a href="index.html" data-page="stream" title="Stream">
-    <div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div>
-    <span class="label">Stream</span>
-  </a>
-  <a href="tickets.html" data-page="tickets" title="Tickets">
-    <div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div>
-    <span class="label">Tickets</span>
-  </a>
-  <a href="food.html" data-page="food" title="Food">
-    <div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div>
-    <span class="label">Food</span>
-  </a>
-  <a href="playzone.html" data-page="playzone" title="Play">
-    <div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div>
-    <span class="label">Play</span>
-  </a>
-  <a href="chat.html" data-page="chat" title="Chat">
-    <div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div>
-    <span class="label">Chat</span>
-  </a>
-  <a href="profiles.html" data-page="profiles" title="Profiles">
-    <div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div>
-    <span class="label">Profiles</span>
-  </a>
-  <a href="notifications.html" data-page="notifications" title="Alerts">
-    <div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div>
-    <span class="label">Alerts</span>
-  </a>
-  <a href="settings.html" data-page="settings" title="Settings">
-    <div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div>
-    <span class="label">Settings</span>
-  </a>
+  <div class="nav-group top">
+    <a href="index.html" data-page="stream" title="Stream">
+      <div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div>
+      <span class="label">Stream</span>
+    </a>
+    <a href="food.html" data-page="food" title="Food">
+      <div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div>
+      <span class="label">Food</span>
+    </a>
+    <a href="chat.html" data-page="chat" title="Chat">
+      <div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div>
+      <span class="label">Chat</span>
+    </a>
+    <a href="tickets.html" data-page="tickets" title="Tickets">
+      <div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div>
+      <span class="label">Tickets</span>
+    </a>
+    <a href="playzone.html" data-page="playzone" title="Play">
+      <div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div>
+      <span class="label">Play</span>
+    </a>
+  </div>
+  <div class="nav-group mid">
+    <a href="profiles.html" data-page="profiles" title="Profiles">
+      <div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div>
+      <span class="label">Profiles</span>
+    </a>
+  </div>
+  <div class="nav-group end">
+    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts">
+      <div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div>
+      <span class="label">Alerts</span>
+    </a>
+    <a href="settings.html" data-page="settings" title="Settings">
+      <div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div>
+      <span class="label">Settings</span>
+    </a>
+  </div>
 </nav>
 
 <main class="container">
   <div class="row">
-    <h2>Tickets (BookMyShow/District inspiration)</h2>
-    <form id="search-tickets" class="searchbar"><input placeholder="Search movies, events, venues..."/></form>
+    <h2>Tickets</h2>
+    <form id="search-tickets" class="searchbar">
+      <input placeholder="Search movies, events, venues..."/>
+      <button type="button" class="icon-btn mic-btn" title="Voice search"><i data-lucide="mic"></i></button>
+      <button type="button" class="icon-btn clear-btn" title="Clear"><i data-lucide="x"></i></button>
+    </form>
   </div>
   <section class="card section">
-    <p class="text-muted">Soon: city selector, theaters, showtimes, seat maps, offers.</p>
+    <p class="text-muted">BookMyShow/District-inspired — city selector, theaters, showtimes, seat maps, offers.</p>
   </section>
+
+  <h3 class="section-title">Now Showing</h3>
+  <div class="grid auto">
+    <div class='poster card'><img src='https://picsum.photos/seed/tk1/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 1</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk2/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 2</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk3/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 3</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk4/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 4</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk5/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 5</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk6/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 6</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk7/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 7</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk8/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 8</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk9/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 9</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk10/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 10</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk11/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 11</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+<div class='poster card'><img src='https://picsum.photos/seed/tk12/800/600' alt=''>
+      <div class='p'><div class='title'>Movie 12</div><div class='text-muted' style='font-size:12px'>2D • English</div>
+      <div class='mt-2'><button class="btn-primary btn">Book</button> <button class="btn">Trailer</button></div></div></div>
+  </div>
 </main>
 </body></html>

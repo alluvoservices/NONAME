@@ -1,63 +1,45 @@
 <!doctype html>
-<html lang="en"><head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>VibriNova — Digital Multiplex</title>
-  <meta name="description" content="All-in-one OTT-style experience: stream, tickets, food, chat, playzone."/>
-  <meta name="theme-color" content="#0b1220"/>
-  <link rel="icon" href="img/logo.svg"/>
-  <link rel="preconnect" href="https://unpkg.com"/>
-  <link rel="stylesheet" href="assets/style.css"/>
-  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script defer src="assets/app.js"></script>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>VibriNova — Digital Multiplex</title>
+    <meta name="description" content="Settings and customizations"/>
+    <meta name="theme-color" content="#0b1220"/>
+    <link rel="icon" href="img/logo.svg"/>
+    <link rel="preconnect" href="https://unpkg.com"/>
+    <link rel="stylesheet" href="assets/style.css"/>
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script defer src="assets/app.js"></script>
+  </head>
 <body class="with-rail" data-page="settings">
-
 <header class="header">
   <div class="header-inner">
     <div class="brand">
+      <a href="profiles.html" class="only-mobile" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
       <img src="img/logo.svg" alt="logo"/>
-      <div>
-        <h1>VibriNova</h1>
-        <small>The Digital Multiplex</small>
-      </div>
+      <div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div>
     </div>
-    <div class="text-muted" id="page-title"></div>
+    <div class="header-actions">
+      <a class="icon-btn only-mobile" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
+    </div>
   </div>
 </header>
 <nav class="nav">
-  <a href="index.html" data-page="stream" title="Stream">
-    <div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div>
-    <span class="label">Stream</span>
-  </a>
-  <a href="tickets.html" data-page="tickets" title="Tickets">
-    <div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div>
-    <span class="label">Tickets</span>
-  </a>
-  <a href="food.html" data-page="food" title="Food">
-    <div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div>
-    <span class="label">Food</span>
-  </a>
-  <a href="playzone.html" data-page="playzone" title="Play">
-    <div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div>
-    <span class="label">Play</span>
-  </a>
-  <a href="chat.html" data-page="chat" title="Chat">
-    <div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div>
-    <span class="label">Chat</span>
-  </a>
-  <a href="profiles.html" data-page="profiles" title="Profiles">
-    <div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div>
-    <span class="label">Profiles</span>
-  </a>
-  <a href="notifications.html" data-page="notifications" title="Alerts">
-    <div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div>
-    <span class="label">Alerts</span>
-  </a>
-  <a href="settings.html" data-page="settings" title="Settings">
-    <div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div>
-    <span class="label">Settings</span>
-  </a>
+  <div class="nav-group top">
+    <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div><span class="label">Stream</span></a>
+    <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div><span class="label">Food</span></a>
+    <a href="chat.html" data-page="chat" title="Chat"><div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div><span class="label">Chat</span></a>
+    <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div><span class="label">Tickets</span></a>
+    <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div><span class="label">Play</span></a>
+  </div>
+  <div class="nav-group mid">
+    <a href="profiles.html" data-page="profiles" title="Profiles"><div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div><span class="label">Profiles</span></a>
+  </div>
+  <div class="nav-group end">
+    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts"><div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div><span class="label">Alerts</span></a>
+    <a href="settings.html" data-page="settings" title="Settings"><div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div><span class="label">Settings</span></a>
+  </div>
 </nav>
 
 <main class="container">
@@ -65,7 +47,7 @@
 
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px">
     <section class="card section">
-      <h3>Theme</h3>
+      <h3>Theme mode</h3>
       <div class="kv">
         <label for="theme-select">Mode</label>
         <select id="theme-select" class="input">
@@ -73,7 +55,24 @@
           <option value="light">Light</option>
         </select>
       </div>
-      <p class="text-muted" style="font-size:12px">More UI tweaks later.</p>
+      <p class="text-muted" style="font-size:12px">UI scales automatically across screen sizes.</p>
+    </section>
+
+    <section class="card section">
+      <h3>Theme colors</h3>
+      <div class="text-muted" style="font-size:12px">Pick a palette or set your own.</div>
+      <div class="swatches">
+        <button class="swatch" style="background:linear-gradient(135deg,#6EE7F9,#8B5CF6)" data-p="#6EE7F9" data-a="#8B5CF6" title="Aurora"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#60A5FA,#34D399)" data-p="#60A5FA" data-a="#34D399" title="Lagoon"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#FDE68A,#F59E0B)" data-p="#FDE68A" data-a="#F59E0B" title="Sunset"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#FCA5A5,#EF4444)" data-p="#FCA5A5" data-a="#EF4444" title="Coral"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#A78BFA,#22D3EE)" data-p="#A78BFA" data-a="#22D3EE" title="Plasma"></button>
+      </div>
+      <div class="picker">
+        <label>Primary <input id="pick-primary" type="color" value="#6EE7F9"/></label>
+        <label>Accent <input id="pick-accent" type="color" value="#8B5CF6"/></label>
+        <button id="apply-colors" class="btn">Apply</button>
+      </div>
     </section>
 
     <section class="card section">
@@ -84,15 +83,19 @@
 
     <section class="card section">
       <h3>Activate device</h3>
-      <div class="kv"><input id="device-name" class="input" placeholder="Device name" value="My Device"/>
-        <button id="gen-device" class="btn-primary btn">Generate 8‑char code</button></div>
+      <div class="kv">
+        <input id="device-name" class="input" placeholder="Device name" value="My Device"/>
+        <button id="gen-device" class="btn-primary btn">Generate 8‑char code</button>
+      </div>
       <div id="devices-list" class="mt-2"></div>
     </section>
 
     <section class="card section">
       <h3>Profile lock</h3>
-      <div class="kv"><input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/>
-        <button id="save-profile-pwd" class="btn">Save</button></div>
+      <div class="kv">
+        <input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/>
+        <button id="save-profile-pwd" class="btn">Save</button>
+      </div>
       <p class="text-muted" style="font-size:12px">Locks the active profile (local only in this demo).</p>
     </section>
 
