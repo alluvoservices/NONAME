@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>VibriNova — Digital Multiplex</title>
+  <meta name="description" content="All-in-one OTT-style experience: stream, tickets, food, chat, playzone."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="icon" href="img/logo.svg"/>
+  <link rel="preconnect" href="https://unpkg.com"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body class="with-rail" data-page="settings">
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <img src="img/logo.svg" alt="logo"/>
+      <div>
+        <h1>VibriNova</h1>
+        <small>The Digital Multiplex</small>
+      </div>
+    </div>
+    <div class="text-muted" id="page-title"></div>
+  </div>
+</header>
+<nav class="nav">
+  <a href="index.html" data-page="stream" title="Stream">
+    <div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div>
+    <span class="label">Stream</span>
+  </a>
+  <a href="tickets.html" data-page="tickets" title="Tickets">
+    <div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div>
+    <span class="label">Tickets</span>
+  </a>
+  <a href="food.html" data-page="food" title="Food">
+    <div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div>
+    <span class="label">Food</span>
+  </a>
+  <a href="playzone.html" data-page="playzone" title="Play">
+    <div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div>
+    <span class="label">Play</span>
+  </a>
+  <a href="chat.html" data-page="chat" title="Chat">
+    <div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div>
+    <span class="label">Chat</span>
+  </a>
+  <a href="profiles.html" data-page="profiles" title="Profiles">
+    <div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div>
+    <span class="label">Profiles</span>
+  </a>
+  <a href="notifications.html" data-page="notifications" title="Alerts">
+    <div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div>
+    <span class="label">Alerts</span>
+  </a>
+  <a href="settings.html" data-page="settings" title="Settings">
+    <div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div>
+    <span class="label">Settings</span>
+  </a>
+</nav>
+
+<main class="container">
+  <div class="row"><h2>Settings</h2></div>
+
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px">
+    <section class="card section">
+      <h3>Theme</h3>
+      <div class="kv">
+        <label for="theme-select">Mode</label>
+        <select id="theme-select" class="input">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+      </div>
+      <p class="text-muted" style="font-size:12px">More UI tweaks later.</p>
+    </section>
+
+    <section class="card section">
+      <h3>Parental control</h3>
+      <label class="kv"><span>Kids restrictions</span><input type="checkbox" checked/></label>
+      <p class="text-muted" style="font-size:12px">Basic UI toggle (demo).</p>
+    </section>
+
+    <section class="card section">
+      <h3>Activate device</h3>
+      <div class="kv"><input id="device-name" class="input" placeholder="Device name" value="My Device"/>
+        <button id="gen-device" class="btn-primary btn">Generate 8‑char code</button></div>
+      <div id="devices-list" class="mt-2"></div>
+    </section>
+
+    <section class="card section">
+      <h3>Profile lock</h3>
+      <div class="kv"><input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/>
+        <button id="save-profile-pwd" class="btn">Save</button></div>
+      <p class="text-muted" style="font-size:12px">Locks the active profile (local only in this demo).</p>
+    </section>
+
+    <section class="card section">
+      <h3>History</h3>
+      <div id="histories" class="text-muted">Search entries: 0 • Watched: 0</div>
+      <button id="clear-histories" class="btn mt-2">Clear histories</button>
+    </section>
+
+    <section class="card section">
+      <h3>Help & feedback</h3>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px">
+        <a class="btn" href="mailto:support@example.com?subject=Help%20with%20VibriNova">Customer care</a>
+        <a class="btn" href="mailto:bugs@example.com?subject=Bug%20report%20VibriNova">Report a bug</a>
+        <a class="btn" href="mailto:feedback@example.com?subject=Feedback%20for%20VibriNova">Send feedback</a>
+      </div>
+    </section>
+  </div>
+</main>
+</body></html>
