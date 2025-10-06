@@ -1,14 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>VibriNova — Digital Multiplex</title>
-    <meta name="description" content="Settings and customizations"/>
-    <meta name="theme-color" content="#0b1220"/>
-    <link rel="icon" href="img/logo.svg"/>
-    <link rel="preconnect" href="https://unpkg.com"/>
-    <link rel="stylesheet" href="assets/style.css"/>
+    <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>VibriNova — Digital Multiplex</title><meta name="description" content="Settings and customizations"/>
+    <meta name="theme-color" content="#0b1220"/><link rel="icon" href="img/logo.svg"/>
+    <link rel="preconnect" href="https://unpkg.com"/><link rel="stylesheet" href="assets/style.css"/>
     <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script defer src="assets/app.js"></script>
   </head>
@@ -16,29 +12,23 @@
 <header class="header">
   <div class="header-inner">
     <div class="brand">
-      <a href="profiles.html" class="only-mobile" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
-      <img src="img/logo.svg" alt="logo"/>
-      <div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div>
+      <a href="profiles.html" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
+      <img src="img/logo.svg" alt="logo"/><div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div>
     </div>
-    <div class="header-actions">
-      <a class="icon-btn only-mobile" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
-    </div>
+    <div class="header-actions"><a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a></div>
   </div>
 </header>
 <nav class="nav">
   <div class="nav-group top">
-    <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i><span class="underline"></span></div><span class="label">Stream</span></a>
-    <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i><span class="underline"></span></div><span class="label">Food</span></a>
-    <a href="chat.html" data-page="chat" title="Chat"><div class="icon-wrap"><i data-lucide="message-square"></i><span class="underline"></span></div><span class="label">Chat</span></a>
-    <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i><span class="underline"></span></div><span class="label">Tickets</span></a>
-    <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i><span class="underline"></span></div><span class="label">Play</span></a>
-  </div>
-  <div class="nav-group mid">
-    <a href="profiles.html" data-page="profiles" title="Profiles"><div class="icon-wrap"><i data-lucide="users-round"></i><span class="underline"></span></div><span class="label">Profiles</span></a>
+    <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i></div><span class="label">Stream</span><span class="underline"></span></a>
+    <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i></div><span class="label">Food</span><span class="underline"></span></a>
+    <a href="chat.html" data-page="chat" title="Chat"><div class="icon-wrap"><i data-lucide="message-square"></i></div><span class="label">Chat</span><span class="underline"></span></a>
+    <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i></div><span class="label">Tickets</span><span class="underline"></span></a>
+    <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i></div><span class="label">Play</span><span class="underline"></span></a>
   </div>
   <div class="nav-group end">
-    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts"><div class="icon-wrap"><i data-lucide="bell"></i><span class="underline"></span></div><span class="label">Alerts</span></a>
-    <a href="settings.html" data-page="settings" title="Settings"><div class="icon-wrap"><i data-lucide="settings"></i><span class="underline"></span></div><span class="label">Settings</span></a>
+    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts"><div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span></a>
+    <a href="settings.html" data-page="settings" title="Settings"><div class="icon-wrap"><i data-lucide="settings"></i></div><span class="label">Settings</span><span class="underline"></span></a>
   </div>
 </nav>
 
@@ -83,19 +73,15 @@
 
     <section class="card section">
       <h3>Activate device</h3>
-      <div class="kv">
-        <input id="device-name" class="input" placeholder="Device name" value="My Device"/>
-        <button id="gen-device" class="btn-primary btn">Generate 8‑char code</button>
-      </div>
+      <div class="kv"><input id="device-name" class="input" placeholder="Device name" value="My Device"/>
+        <button id="gen-device" class="btn-primary btn">Generate 8‑char code</button></div>
       <div id="devices-list" class="mt-2"></div>
     </section>
 
     <section class="card section">
       <h3>Profile lock</h3>
-      <div class="kv">
-        <input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/>
-        <button id="save-profile-pwd" class="btn">Save</button>
-      </div>
+      <div class="kv"><input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/>
+        <button id="save-profile-pwd" class="btn">Save</button></div>
       <p class="text-muted" style="font-size:12px">Locks the active profile (local only in this demo).</p>
     </section>
 
