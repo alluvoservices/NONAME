@@ -13,25 +13,16 @@
 
 <header class="header">
   <div class="header-inner">
-    <!-- Left: profile (tap -> Settings) -->
     <a href="settings.html" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
-    <!-- Center: brand -->
     <div class="brand">
       <img src="img/logo.svg" alt="logo"/>
-      <div>
-        <h1>VibriNova</h1>
-        <small class="text-muted">The Digital Multiplex</small>
-      </div>
+      <div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div>
     </div>
-    <!-- Right: notifications -->
-    <div class="header-actions">
-      <a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
-    </div>
+    <div class="header-actions"><a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a></div>
   </div>
 </header>
-
 <nav class="nav">
-  <!-- Desktop-only profile at top of sidebar -->
+  <!-- Desktop-only profile at top -->
   <div class="nav-group profile only-desktop">
     <a href="settings.html" data-page="profile" title="Profile & Settings">
       <div class="icon-wrap"><span id="sidebar-avatar" class="avatar-tiny">P</span></div>
@@ -39,21 +30,13 @@
       <span class="underline"></span>
     </a>
   </div>
-
-  <!-- Main tabs (MOBILE: Stream, Food, Chat, Tickets, Play only) -->
+  <!-- Main 5 tabs (no Settings here) -->
   <div class="nav-group top">
     <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i></div><span class="label">Stream</span><span class="underline"></span></a>
     <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i></div><span class="label">Food</span><span class="underline"></span></a>
     <a href="chat.html" data-page="chat" title="Chat"><div class="icon-wrap"><i data-lucide="message-square"></i></div><span class="label">Chat</span><span class="underline"></span></a>
     <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i></div><span class="label">Tickets</span><span class="underline"></span></a>
     <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i></div><span class="label">Play</span><span class="underline"></span></a>
-  </div>
-
-  <!-- Desktop-only alerts near bottom -->
-  <div class="nav-group end">
-    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts">
-      <div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span>
-    </a>
   </div>
 </nav>
 
@@ -66,179 +49,93 @@
       <button type="button" class="icon-btn clear-btn" title="Clear"><i data-lucide="x"></i></button>
     </form>
   </div>
-
   <section class="card section">
     <div class="row">
-      <div>
-        <h3 style="font-size:clamp(22px,3vw,32px);margin:0 0 6px">VibriNova Picks</h3>
-        <div class="text-muted">Curated | Action | Adventure</div>
-        <button class="btn-primary btn mt-2">Explore</button>
-      </div>
-      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="" style="border-radius:14px; display:none; width:260px; height:150px; object-fit:cover" onload="this.style.display='block'"/>
+      <div><h3 style="font-size:clamp(22px,3vw,32px);margin:0 0 6px">VibriNova Picks</h3><div class="text-muted">Curated | Action | Adventure</div><button class="btn-primary btn mt-2">Explore</button></div>
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="" style="border-radius:14px;display:none;width:260px;height:150px;object-fit:cover" onload="this.style.display='block'"/>
     </div>
   </section>
-
   <h3 class="section-title">Trending Now</h3>
   <div class="grid auto">
-    <div class="poster card" data-age="7+">
-      <img src="https://picsum.photos/seed/tr1/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 1</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 1">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="7+"><img src="https://picsum.photos/seed/tr1/800/600" alt="">
+      <div class="p"><div class="title">Title 1</div><div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 1">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="13+">
-      <img src="https://picsum.photos/seed/tr2/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 2</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 2">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="13+"><img src="https://picsum.photos/seed/tr2/800/600" alt="">
+      <div class="p"><div class="title">Title 2</div><div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 2">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="18+">
-      <img src="https://picsum.photos/seed/tr3/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 3</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 3">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="18+"><img src="https://picsum.photos/seed/tr3/800/600" alt="">
+      <div class="p"><div class="title">Title 3</div><div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 3">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="U">
-      <img src="https://picsum.photos/seed/tr4/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 4</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 4">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="U"><img src="https://picsum.photos/seed/tr4/800/600" alt="">
+      <div class="p"><div class="title">Title 4</div><div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 4">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="7+">
-      <img src="https://picsum.photos/seed/tr5/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 5</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 5">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="7+"><img src="https://picsum.photos/seed/tr5/800/600" alt="">
+      <div class="p"><div class="title">Title 5</div><div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 5">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="13+">
-      <img src="https://picsum.photos/seed/tr6/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 6</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 6">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="13+"><img src="https://picsum.photos/seed/tr6/800/600" alt="">
+      <div class="p"><div class="title">Title 6</div><div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 6">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="18+">
-      <img src="https://picsum.photos/seed/tr7/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 7</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 7">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="18+"><img src="https://picsum.photos/seed/tr7/800/600" alt="">
+      <div class="p"><div class="title">Title 7</div><div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 7">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="U">
-      <img src="https://picsum.photos/seed/tr8/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 8</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 8">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="U"><img src="https://picsum.photos/seed/tr8/800/600" alt="">
+      <div class="p"><div class="title">Title 8</div><div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 8">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="7+">
-      <img src="https://picsum.photos/seed/tr9/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 9</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 9">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="7+"><img src="https://picsum.photos/seed/tr9/800/600" alt="">
+      <div class="p"><div class="title">Title 9</div><div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 9">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="13+">
-      <img src="https://picsum.photos/seed/tr10/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 10</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 10">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="13+"><img src="https://picsum.photos/seed/tr10/800/600" alt="">
+      <div class="p"><div class="title">Title 10</div><div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 10">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="18+">
-      <img src="https://picsum.photos/seed/tr11/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 11</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 11">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="18+"><img src="https://picsum.photos/seed/tr11/800/600" alt="">
+      <div class="p"><div class="title">Title 11</div><div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 11">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="U">
-      <img src="https://picsum.photos/seed/tr12/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 12</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 12">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="U"><img src="https://picsum.photos/seed/tr12/800/600" alt="">
+      <div class="p"><div class="title">Title 12</div><div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 12">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="7+">
-      <img src="https://picsum.photos/seed/tr13/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 13</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 13">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="7+"><img src="https://picsum.photos/seed/tr13/800/600" alt="">
+      <div class="p"><div class="title">Title 13</div><div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 13">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="13+">
-      <img src="https://picsum.photos/seed/tr14/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 14</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 14">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="13+"><img src="https://picsum.photos/seed/tr14/800/600" alt="">
+      <div class="p"><div class="title">Title 14</div><div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 14">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="18+">
-      <img src="https://picsum.photos/seed/tr15/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 15</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 15">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="18+"><img src="https://picsum.photos/seed/tr15/800/600" alt="">
+      <div class="p"><div class="title">Title 15</div><div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 15">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="U">
-      <img src="https://picsum.photos/seed/tr16/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 16</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 16">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="U"><img src="https://picsum.photos/seed/tr16/800/600" alt="">
+      <div class="p"><div class="title">Title 16</div><div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 16">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="7+">
-      <img src="https://picsum.photos/seed/tr17/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 17</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 17">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="7+"><img src="https://picsum.photos/seed/tr17/800/600" alt="">
+      <div class="p"><div class="title">Title 17</div><div class="text-muted" style="font-size:12px">Action • 2024 • 7+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 17">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="13+">
-      <img src="https://picsum.photos/seed/tr18/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 18</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 18">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="13+"><img src="https://picsum.photos/seed/tr18/800/600" alt="">
+      <div class="p"><div class="title">Title 18</div><div class="text-muted" style="font-size:12px">Action • 2024 • 13+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 18">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="18+">
-      <img src="https://picsum.photos/seed/tr19/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 19</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 19">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="18+"><img src="https://picsum.photos/seed/tr19/800/600" alt="">
+      <div class="p"><div class="title">Title 19</div><div class="text-muted" style="font-size:12px">Action • 2024 • 18+</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 19">Play</button> <button class="btn">Add</button></div></div>
     </div>
-    <div class="poster card" data-age="U">
-      <img src="https://picsum.photos/seed/tr20/800/600" alt="">
-      <div class="p">
-        <div class="title">Title 20</div>
-        <div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
-        <div class="mt-2"><button class="btn watch-btn" data-title="Title 20">Play</button> <button class="btn">Add</button></div>
-      </div>
+    <div class="poster card" data-age="U"><img src="https://picsum.photos/seed/tr20/800/600" alt="">
+      <div class="p"><div class="title">Title 20</div><div class="text-muted" style="font-size:12px">Action • 2024 • U</div>
+      <div class="mt-2"><button class="btn watch-btn" data-title="Title 20">Play</button> <button class="btn">Add</button></div></div>
     </div>
   </div>
 </main>
