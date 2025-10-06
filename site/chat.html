@@ -15,20 +15,34 @@
 
 <header class="header">
   <div class="header-inner">
+    <!-- Left: profile (tap -> Settings) -->
+    <a href="settings.html" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
+    <!-- Center: brand -->
     <div class="brand">
-      <a href="profiles.html" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
       <img src="img/logo.svg" alt="logo"/>
       <div>
         <h1>VibriNova</h1>
         <small class="text-muted">The Digital Multiplex</small>
       </div>
     </div>
+    <!-- Right: notifications -->
     <div class="header-actions">
       <a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
     </div>
   </div>
 </header>
+
 <nav class="nav">
+  <!-- Desktop-only profile at top of sidebar -->
+  <div class="nav-group profile only-desktop">
+    <a href="settings.html" data-page="profile" title="Profile & Settings">
+      <div class="icon-wrap"><span id="sidebar-avatar" class="avatar-tiny">P</span></div>
+      <span class="label">Profile</span>
+      <span class="underline"></span>
+    </a>
+  </div>
+
+  <!-- Main tabs (MOBILE: Stream, Food, Chat, Tickets, Play only) -->
   <div class="nav-group top">
     <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i></div><span class="label">Stream</span><span class="underline"></span></a>
     <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i></div><span class="label">Food</span><span class="underline"></span></a>
@@ -36,14 +50,19 @@
     <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i></div><span class="label">Tickets</span><span class="underline"></span></a>
     <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i></div><span class="label">Play</span><span class="underline"></span></a>
   </div>
+
+  <!-- Desktop-only alerts near bottom -->
   <div class="nav-group end">
-    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts"><div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span></a>
-    <a href="settings.html" data-page="settings" title="Settings"><div class="icon-wrap"><i data-lucide="settings"></i></div><span class="label">Settings</span><span class="underline"></span></a>
+    <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts">
+      <div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span>
+    </a>
   </div>
 </nav>
 
 <main class="container">
-  <div class="row"><h2>Chat</h2></div>
+  <div class="row"><h2>Chat</h2>
+    <div class="searchbar" style="opacity:.6"><input placeholder="Search chats..." disabled/></div>
+  </div>
   <div class="card chat-wrap section">
     <img class="chat-bg" src="https://picsum.photos/seed/chatwall/1600/600" alt=""/>
     <div id="chat-messages" class="chat-messages"></div>

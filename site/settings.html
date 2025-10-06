@@ -11,14 +11,15 @@
 <body class="with-rail" data-page="settings">
 <header class="header">
   <div class="header-inner">
-    <div class="brand">
-      <a href="profiles.html" title="Profiles"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
-      <img src="img/logo.svg" alt="logo"/><div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div>
-    </div>
+    <a href="settings.html" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
+    <div class="brand"><img src="img/logo.svg" alt="logo"/><div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div></div>
     <div class="header-actions"><a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a></div>
   </div>
 </header>
 <nav class="nav">
+  <div class="nav-group profile only-desktop">
+    <a href="settings.html" data-page="profile" title="Profile & Settings"><div class="icon-wrap"><span id="sidebar-avatar" class="avatar-tiny">P</span></div><span class="label">Profile</span><span class="underline"></span></a>
+  </div>
   <div class="nav-group top">
     <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i></div><span class="label">Stream</span><span class="underline"></span></a>
     <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i></div><span class="label">Food</span><span class="underline"></span></a>
@@ -28,26 +29,17 @@
   </div>
   <div class="nav-group end">
     <a href="notifications.html" data-page="notifications" class="only-desktop" title="Alerts"><div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span></a>
-    <a href="settings.html" data-page="settings" title="Settings"><div class="icon-wrap"><i data-lucide="settings"></i></div><span class="label">Settings</span><span class="underline"></span></a>
   </div>
 </nav>
 
-<main class="container">
+<main class="container safe-bottom">
   <div class="row"><h2>Settings</h2></div>
-
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px">
     <section class="card section">
       <h3>Theme mode</h3>
-      <div class="kv">
-        <label for="theme-select">Mode</label>
-        <select id="theme-select" class="input">
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-        </select>
-      </div>
+      <div class="kv"><label for="theme-select">Mode</label><select id="theme-select" class="input"><option value="dark">Dark</option><option value="light">Light</option></select></div>
       <p class="text-muted" style="font-size:12px">UI scales automatically across screen sizes.</p>
     </section>
-
     <section class="card section">
       <h3>Theme colors</h3>
       <div class="text-muted" style="font-size:12px">Pick a palette or set your own.</div>
@@ -64,35 +56,11 @@
         <button id="apply-colors" class="btn">Apply</button>
       </div>
     </section>
-
-    <section class="card section">
-      <h3>Parental control</h3>
-      <label class="kv"><span>Kids restrictions</span><input type="checkbox" checked/></label>
-      <p class="text-muted" style="font-size:12px">Basic UI toggle (demo).</p>
-    </section>
-
-    <section class="card section">
-      <h3>Activate device</h3>
-      <div class="kv"><input id="device-name" class="input" placeholder="Device name" value="My Device"/>
-        <button id="gen-device" class="btn-primary btn">Generate 8‑char code</button></div>
-      <div id="devices-list" class="mt-2"></div>
-    </section>
-
-    <section class="card section">
-      <h3>Profile lock</h3>
-      <div class="kv"><input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/>
-        <button id="save-profile-pwd" class="btn">Save</button></div>
-      <p class="text-muted" style="font-size:12px">Locks the active profile (local only in this demo).</p>
-    </section>
-
-    <section class="card section">
-      <h3>History</h3>
-      <div id="histories" class="text-muted">Search entries: 0 • Watched: 0</div>
-      <button id="clear-histories" class="btn mt-2">Clear histories</button>
-    </section>
-
-    <section class="card section">
-      <h3>Help & feedback</h3>
+    <section class="card section"><h3>Parental control</h3><label class="kv"><span>Kids restrictions</span><input type="checkbox" checked/></label><p class="text-muted" style="font-size:12px">Basic UI toggle (demo).</p></section>
+    <section class="card section"><h3>Activate device</h3><div class="kv"><input id="device-name" class="input" placeholder="Device name" value="My Device"/><button id="gen-device" class="btn-primary btn">Generate 8‑char code</button></div><div id="devices-list" class="mt-2"></div></section>
+    <section class="card section"><h3>Profile lock</h3><div class="kv"><input id="profile-pwd" class="input" type="password" placeholder="New password (optional)"/><button id="save-profile-pwd" class="btn">Save</button></div><p class="text-muted" style="font-size:12px">Locks the active profile (local only in this demo).</p></section>
+    <section class="card section"><h3>History</h3><div id="histories" class="text-muted">Search entries: 0 • Watched: 0</div><button id="clear-histories" class="btn mt-2">Clear histories</button></section>
+    <section class="card section"><h3>Help & feedback</h3>
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px">
         <a class="btn" href="mailto:support@example.com?subject=Help%20with%20VibriNova">Customer care</a>
         <a class="btn" href="mailto:bugs@example.com?subject=Bug%20report%20VibriNova">Report a bug</a>
