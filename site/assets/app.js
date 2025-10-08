@@ -23,21 +23,91 @@ function bindChat(){const inp=U.el("#chat-input"),form=U.el("#chat-form"),w=U.el
 function bindSearch(page){const f=U.el(`#search-${page}`);if(!f)return;const i=U.el("input",f),mic=U.el(".mic-btn",f),clr=U.el(".clear-btn",f);f.addEventListener("submit",e=>{e.preventDefault();const q=(i.value||"").trim();if(!q)return;recordSearch(page,q);i.value=""});clr&&clr.addEventListener("click",()=>{i.value="";i.focus()});if(mic){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){mic.style.display="none"}else{const rec=new SR();rec.lang="en-US";rec.interimResults=false;rec.continuous=false;let on=false;const start=()=>{if(on)return;on=true;rec.start();mic.classList.add("btn-primary")};const stop=()=>{if(!on)return;on=false;rec.stop();mic.classList.remove("btn-primary")};mic.addEventListener("click",()=>on?stop():start());rec.onresult=e=>{const t=Array.from(e.results).map(r=>r[0].transcript).join(" ");i.value=(i.value+" "+t).trim()};rec.onend=stop;rec.onerror=stop}}}
 
 /* Profiles */
-function bindProfiles(){const w=U.el("#profiles-list");if(!w)return;const {profiles,activeProfileId}=Store.get();w.innerHTML=profiles.map(p=>`<button class="profile" data-id="${p.id}" style="background:none;border:0;cursor:pointer"><div class="avatar ${p.id===activeProfileId?"active":""}">${(p.avatar||p.name[0]||"P").slice(0,1)}</div><div class="mt-1" style="text-align:center">${p.name}${p.kids?` <small class="text-muted">(Kids)</small>`:""}</div></button>`).join("");U.els(".profile",w).forEach(b=>b.addEventListener("click",()=>{const id=b.getAttribute("data-id");Store.set(s=>{s.activeProfileId=id;s.onboarded=true;return s});refreshAvatars();if(U.qs("first")==="1"||document.referrer==="")location.href="index.html"}))}
+function bindProfiles(){const w=U.el("#profiles-list");if(!w)return;const {profiles,activeProfileId}=Store.get();w.innerHTML=profiles.map(p=>`<button class="profile" data-id="${p.id}" style="background:none;border:0;cursor:pointer"><div class="avatar ${p.id===activeProfileId?"active":""}">${(p.avatar||p.name[0]||"P").slice(0,1)}</div><div class="mt-1" style="text-align:center">${p.name}${p.kids?` <small class="text-muted">(Kids)</small>`:""}</div></button>`).join("");U.els(".profile",w).forEach(b=>b.addEventListener("click",()=>{const id=b.getAttribute("data-id");Store.set(s=>{s.activeProfileId=id;s.onboarded=true;return s});sessionStorage.setItem("vn-profile-confirmed","1");refreshAvatars();const last=Store.get().lastPage||"index";location.href=last+".html"}))}
 function refreshAvatars(){const {profiles,activeProfileId}=Store.get();const me=profiles.find(p=>p.id===activeProfileId);const ch=(me?.avatar||me?.name?.[0]||"P").slice(0,1);const a1=U.el("#mobile-avatar");if(a1)a1.textContent=ch;const a2=U.el("#sidebar-avatar");if(a2)a2.textContent=ch}
 
 /* Kids filter */
 function kidsFilter(){const {profiles,activeProfileId}=Store.get();const me=profiles.find(p=>p.id===activeProfileId);if(!me?.kids)return;const ok=new Set(["U","7+"]);U.els(".poster").forEach(card=>{const age=card.getAttribute("data-age")||"U";card.style.display= ok.has(age) ? "" : "none"})}
 
-/* Devices & settings */
-function renderDevices(){const lst=U.el("#devices-list");if(!lst)return;const {devices}=Store.get();lst.innerHTML=devices.length?devices.map(d=>`<div class="kv"><div>${d.name} • <strong>${d.code}</strong></div><button class="btn" data-remove="${d.code}">Remove</button></div>`).join(""):`<p class="text-muted">No devices activated yet.</p>`;U.els("button[data-remove]").forEach(b=>b.addEventListener("click",()=>{const code=b.getAttribute("data-remove");Store.set(s=>{s.devices=s.devices.filter(x=>x.code!==code);return s});renderDevices()}));const hist=U.el("#histories");if(hist){const id=Store.get().activeProfileId||"p1";const hp=Store.get().byProfile[id].histories;const searches=Object.values(hp.search).reduce((a,b)=>a+b.length,0);hist.textContent=`Search entries: ${searches} • Watched: ${hp.watch.length}`}}
-function bindSettings(){U.el("#gen-device")?.addEventListener("click",()=>{const name=(U.el("#device-name")?.value||"My Device").toString();const d={id:U.uid(),name,code:U.code8(),activatedAt:Date.now()};Store.set(s=>{s.devices=[d,...s.devices].slice(0,50);return s});alert(`Activation code for ${d.name}: ${d.code}`);renderDevices()});U.el("#clear-histories")?.addEventListener("click",()=>{Store.set(s=>{const id=s.activeProfileId||"p1";s.byProfile[id].histories={search:{},watch:[]};return s});renderDevices()});const sel=U.el("#theme-select");if(sel){sel.value=Store.get().theme.mode;sel.addEventListener("change",e=>setMode(e.target.value))}U.els(".swatch").forEach(sw=>sw.addEventListener("click",()=>setColors(sw.getAttribute("data-p"),sw.getAttribute("data-a"))));const p=U.el("#pick-primary"),a=U.el("#pick-accent");U.el("#apply-colors")?.addEventListener("click",()=>setColors(p.value,a.value));renderDevices()}
+/* Devices & settings + profile switcher */
+function renderDevices(){const lst=U.el("#devices-list");if(!lst)return;const {devices}=Store.get();lst.innerHTML=devices.length?devices.map(d=>`<div class="kv"><div>${d.name} • <strong>${d.code}</strong></div><button class="btn" data-remove="${d.code}">Remove</button></div>`).join(""):`<p class="text-muted">No devices activated yet.</p>`;U.els("button[data-remove]").forEach(b=>b.addEventListener("click",()=>{const code=b.getAttribute("data-remove");Store.set(s=>{s.devices=s.devices.filter(x=>x.code!==code);return s});renderDevices()}));const hist=U.el("#histories");if(hist){const id=Store.get().activeProfileId||"p1";const hp=Store.get().byProfile[id].histories;const searches=Object.values(hp.search).reduce((a,b)=>a+b.length,0);hist.textContent=`Search entries: ${searches} • Watched: ${hp.watch.length}`}
 
-/* Gate to profiles */
-function guard(page){const {onboarded,activeProfileId}=Store.get();if(!onboarded||!activeProfileId){if(page!=="profiles"){location.replace("profiles.html?first=1");return false}}return true}
+  const sw=U.el("#switcher-list");
+  if(sw){
+    const {profiles,activeProfileId}=Store.get();
+    sw.innerHTML=profiles.map(p=>`<button class="btn ${p.id===activeProfileId?'btn-primary':''}" data-switch="${p.id}">${p.name}</button>`).join(" ");
+    U.els('button[data-switch]', sw).forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const id=b.getAttribute('data-switch');
+        Store.set(s=>{s.activeProfileId=id;s.onboarded=true;return s});
+        sessionStorage.setItem("vn-profile-confirmed","1");
+        refreshAvatars();
+        const last=Store.get().lastPage||"index";
+        location.href=last+".html";
+      });
+    });
+  }
+}
+function bindSettings(){
+  U.el("#gen-device")?.addEventListener("click",()=>{const name=(U.el("#device-name")?.value||"My Device").toString();const d={id:U.uid(),name,code:U.code8(),activatedAt:Date.now()};Store.set(s=>{s.devices=[d,...s.devices].slice(0,50);return s});alert(`Activation code for ${d.name}: ${d.code}`);renderDevices()});
+  U.el("#clear-histories")?.addEventListener("click",()=>{Store.set(s=>{const id=s.activeProfileId||"p1";s.byProfile[id].histories={search:{},watch:[]};return s});renderDevices()});
+  const sel=U.el("#theme-select");if(sel){sel.value=Store.get().theme.mode;sel.addEventListener("change",e=>setMode(e.target.value))}
+  U.els(".swatch").forEach(sw=>sw.addEventListener("click",()=>setColors(sw.getAttribute("data-p"),sw.getAttribute("data-a"))));
+  const p=U.el("#pick-primary"),a=U.el("#pick-accent");U.el("#apply-colors")?.addEventListener("click",()=>setColors(p.value,a.value));
+  renderDevices();
+}
 
-/* Header autohide: never hide at page top (<= 12px). Hide on scroll up, show on scroll down. */
-function bindHeaderAutohide(){const h=U.el(".header");if(!h)return;let last=window.scrollY||0,ticking=false;function onScroll(){const y=window.scrollY||0;if(y<=12){h.classList.remove("is-hidden");last=y;ticking=false;return}if(y<last-8){h.classList.add("is-hidden")}else if(y>last+8){h.classList.remove("is-hidden")}last=y;ticking=false}window.addEventListener("scroll",()=>{if(!ticking){window.requestAnimationFrame(onScroll);ticking=true}}, {passive:true})}
+/* First-run/session gate */
+function guard(page){
+  const sessionOK = sessionStorage.getItem("vn-profile-confirmed")==="1";
+  const {activeProfileId, profiles} = Store.get();
+  const hasActive = !!activeProfileId && profiles.some(p=>p.id===activeProfileId);
+  if(!sessionOK || !hasActive){
+    if(page!=="profiles"){ location.replace("profiles.html?first=1"); return false; }
+  }
+  return true;
+}
+
+/* Header autohide: never hide at top */
+function bindHeaderAutohide(){
+  const h=U.el(".header"); if(!h) return;
+  let last=window.scrollY||0, ticking=false;
+  function onScroll(){
+    const y=window.scrollY||0;
+    if(y<=12){ h.classList.remove("is-hidden"); last=y; ticking=false; return; }
+    if(y<last-8) h.classList.add("is-hidden");   // up -> hide
+    else if(y>last+8) h.classList.remove("is-hidden"); // down -> show
+    last=y; ticking=false;
+  }
+  window.addEventListener("scroll", ()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking=true; } }, { passive:true });
+}
+
+/* Remember last page and scroll */
+function remember(page){
+  Store.set(s=>{ s.lastPage=page; return s; });
+  const key="vn-lastScroll:"+page;
+  const sc=localStorage.getItem(key);
+  if(sc) setTimeout(()=>window.scrollTo({top:parseInt(sc,10)||0,behavior:"auto"}),0);
+  window.addEventListener("beforeunload", ()=> localStorage.setItem(key, String(window.scrollY||0)));
+}
 
 /* Boot */
-document.addEventListener("DOMContentLoaded",()=>{applyTheme();refreshAvatars();bindHeaderAutohide();if(window.lucide&&window.lucide.createIcons)window.lucide.createIcons();const page=document.body.getAttribute("data-page")||"stream";if(!guard(page))return;setActive(page);if(page==="stream"){bindSearch("stream");kidsFilter();U.els(".watch-btn").forEach(b=>b.addEventListener("click",()=>recordWatch(b.getAttribute("data-title"))))}if(page==="food"){bindSearch("food")}if(page==="chat"){bindChat()}if(page==="tickets"){bindSearch("tickets");kidsFilter()}if(page==="playzone"){bindSearch("playzone")}if(page==="profiles"){bindProfiles()}if(page==="settings"){bindSettings()}})
+document.addEventListener("DOMContentLoaded", ()=>{
+  applyTheme();
+  refreshAvatars();
+  bindHeaderAutohide();
+  if(window.lucide&&window.lucide.createIcons) window.lucide.createIcons();
+
+  const page=document.body.getAttribute("data-page")||"stream";
+  if(!guard(page)) return;
+  setActive(page);
+  remember(page);
+
+  if(page==="stream"){ bindSearch("stream"); kidsFilter(); U.els(".watch-btn").forEach(b=>b.addEventListener("click",()=>recordWatch(b.getAttribute("data-title")))); }
+  if(page==="food"){ bindSearch("food"); }
+  if(page==="chat"){ bindChat(); }
+  if(page==="tickets"){ bindSearch("tickets"); kidsFilter(); }
+  if(page==="playzone"){ bindSearch("playzone"); }
+  if(page==="profiles"){ bindProfiles(); }
+  if(page==="settings"){ bindSettings(); }
+});

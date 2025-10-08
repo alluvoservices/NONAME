@@ -2,8 +2,7 @@
   --bg:#0b1220; --card:#0f172a; --soft:#111827;
   --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937;
   --primary:#6EE7F9; --accent:#8B5CF6;
-  --rail-w:80px;         /* collapsed ribbon width (desktop) */
-  --rail-w-expanded:220px; /* expanded on hover (desktop) */
+  --rail-w:80px; --rail-w-expanded:220px;
 }
 :root[data-theme="light"]{
   --bg:#f7fafc; --card:#ffffff; --soft:#f1f5f9;
@@ -19,10 +18,14 @@ body{
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 
-/* Fit PC window width; avoid shifting on ribbon expand (overlay) */
+/* Fit PC window and add bottom space globally so nothing sits under bars */
 .container{
   max-width:min(1600px, 100vw - 32px);
   margin:0 auto; padding:16px;
+  padding-bottom:140px;              /* extra bottom on all pages */
+}
+@media (min-width:880px){
+  .container{ padding-bottom:56px; } /* reasonable bottom space on desktop too */
 }
 
 .card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
@@ -55,7 +58,7 @@ h3{font-size:clamp(16px,2vw,22px);margin:0 0 6px}
 .poster .p{padding:10px}
 .poster .title{font-weight:700}
 
-/* Header with improved autohide (never hides at top) */
+/* Header (autohide but never at top) */
 .header{
   position:sticky;top:0;z-index:40;transition:transform .25s ease;
   backdrop-filter:saturate(1.1) blur(6px);
@@ -67,7 +70,6 @@ h3{font-size:clamp(16px,2vw,22px);margin:0 0 6px}
 .brand img{width:36px;height:36px;border-radius:10px}
 .brand small{display:block;color:var(--muted);margin-top:-2px}
 .header-actions{display:flex;align-items:center;gap:10px}
-/* Mobile: profile-left, brand-centered, notifications-right */
 @media (max-width:879px){
   .header-inner{display:grid;grid-template-columns:40px 1fr 40px;align-items:center}
   .brand{justify-self:center;text-align:center}
@@ -83,18 +85,17 @@ h3{font-size:clamp(16px,2vw,22px);margin:0 0 6px}
 }
 @media (min-width:880px){
   .nav{top:0;bottom:0;right:auto;width:var(--rail-w);border-top:0;border-right:1px solid var(--border);flex-direction:column;align-items:center;padding:10px 6px;transition:width .2s ease}
-  .nav:hover{width:var(--rail-w-expanded)}        /* overlay expand; content doesn't shift */
-  .nav:hover a{justify-items:start;width:100%;padding-left:12px}
+  .nav:hover{width:var(--rail-w-expanded)}      /* expand ribbon */
 }
 .nav-group{display:flex;gap:6px}
 @media (min-width:880px){
   .nav-group{flex-direction:column;width:100%}
-  .nav-group.profile{margin-top:8px;margin-bottom:8px} /* small gap from top */
+  .nav-group.profile{margin-top:8px;margin-bottom:8px}
   .nav-divider{display:block;width:85%;height:1px;background:var(--border);opacity:.7;border-radius:1px;align-self:center;margin:6px 0}
-  .nav-group.end{margin-top:auto} /* notifications pinned bottom */
+  .nav-group.end{margin-top:auto}
 }
 
-/* Nav item: icon, label, underline (no overlap) */
+/* Nav item grid (icon, label, underline) */
 .nav a{
   display:grid;grid-template-rows:auto auto 6px;row-gap:4px;justify-items:center;align-content:center;
   width:64px;height:64px;color:var(--muted);text-decoration:none;position:relative;transition:.2s;
@@ -105,14 +106,27 @@ h3{font-size:clamp(16px,2vw,22px);margin:0 0 6px}
 .nav a.active{color:var(--text)}
 .nav a.active .icon-wrap{transform:scale(1.15)}
 .nav a.active .underline{width:42px;background-image:linear-gradient(90deg,var(--primary),var(--accent))}
+
+/* EXPANDED: show label to the right of icon (desktop hover) */
 @media (min-width:880px){
+  .nav:hover a{
+    grid-template-columns:28px 1fr;
+    grid-template-rows:auto 6px;
+    column-gap:10px;
+    width:calc(var(--rail-w-expanded) - 12px);
+    height:56px;
+    justify-items:start;
+  }
+  .nav:hover a .icon-wrap{grid-row:1;grid-column:1}
+  .nav:hover a .label{grid-row:1;grid-column:2;opacity:1;width:auto}
+  .nav:hover a .underline{grid-row:2;grid-column:1 / span 2;justify-self:start}
   .nav:not(:hover) .label{opacity:0;width:0;overflow:hidden}
 }
 
 /* Layout offsets */
 .with-rail{padding-bottom:74px}
-@media (min-width:880px){ .with-rail{margin-left:var(--rail-w);padding-bottom:0} }
-.safe-bottom{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))} /* prevent overlap with mobile bar */
+@media (min-width:880px){ .with-rail{margin-left:var(--rail-w);padding-bottom:56px} }
+.safe-bottom{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 
 /* Chat */
 .chat-wrap{position:relative;min-height:340px;border-radius:18px;overflow:hidden}
@@ -143,5 +157,5 @@ h3{font-size:clamp(16px,2vw,22px);margin:0 0 6px}
 .only-desktop{display:none}
 @media (min-width:880px){ .only-mobile{display:none} .only-desktop{display:inline-flex} }
 
-/* Spacing */
+/* Spacing helpers */
 .mt-1{margin-top:6px}.mt-2{margin-top:10px}.mt-3{margin-top:14px}.mb-2{margin-bottom:10px}
