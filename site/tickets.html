@@ -13,16 +13,20 @@
 
 <header class="header">
   <div class="header-inner">
-    <a href="settings.html" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
+    <!-- Mobile-only: profile left + notifications right -->
+    <a href="settings.html" class="only-mobile" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
     <div class="brand">
       <img src="img/logo.svg" alt="logo"/>
       <div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div>
     </div>
-    <div class="header-actions"><a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a></div>
+    <div class="header-actions only-mobile">
+      <a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a>
+    </div>
   </div>
 </header>
+
 <nav class="nav">
-  <!-- Desktop-only profile at top -->
+  <!-- Desktop: profile pinned at top -->
   <div class="nav-group profile only-desktop">
     <a href="settings.html" data-page="profile" title="Profile & Settings">
       <div class="icon-wrap"><span id="sidebar-avatar" class="avatar-tiny">P</span></div>
@@ -30,13 +34,22 @@
       <span class="underline"></span>
     </a>
   </div>
-  <!-- Main 5 tabs (no Settings here) -->
+  <div class="nav-divider only-desktop"></div>
+
+  <!-- Main tabs (mobile bottom 5; desktop top group) -->
   <div class="nav-group top">
     <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i></div><span class="label">Stream</span><span class="underline"></span></a>
     <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i></div><span class="label">Food</span><span class="underline"></span></a>
     <a href="chat.html" data-page="chat" title="Chat"><div class="icon-wrap"><i data-lucide="message-square"></i></div><span class="label">Chat</span><span class="underline"></span></a>
     <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i></div><span class="label">Tickets</span><span class="underline"></span></a>
     <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i></div><span class="label">Play</span><span class="underline"></span></a>
+  </div>
+
+  <!-- Desktop: notifications at bottom -->
+  <div class="nav-group end only-desktop">
+    <a href="notifications.html" data-page="notifications" title="Alerts">
+      <div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span>
+    </a>
   </div>
 </nav>
 
@@ -49,7 +62,7 @@
       <button type="button" class="icon-btn clear-btn" title="Clear"><i data-lucide="x"></i></button>
     </form>
   </div>
-  <section class="card section"><p class="text-muted">District/BookMyShow-style — city, theaters, showtimes, seat maps.</p></section>
+  <section class="card section"><p class="text-muted">City selector, theaters, showtimes, seat maps, offers.</p></section>
   <h3 class="section-title">Now Showing</h3>
   <div class="grid auto">
     <div class="poster card" data-age="7+"><img src="https://picsum.photos/seed/tk1/800/600" alt="">

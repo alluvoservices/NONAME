@@ -10,7 +10,7 @@ function setColors(p,a){const hex=/^#([A-Fa-f0-9]{3}){1,2}$/;Store.set(s=>{if(he
 /* Nav active */
 function setActive(page){U.els(".nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("data-page")===page))}
 
-/* Histories (per profile) */
+/* Per-profile histories */
 function recordSearch(page,q){Store.set(s=>{const id=s.activeProfileId||"p1";const list=s.byProfile[id].histories.search[page]||[];s.byProfile[id].histories.search[page]=[q,...list].slice(0,50);return s})}
 function recordWatch(title){Store.set(s=>{const id=s.activeProfileId||"p1";s.byProfile[id].histories.watch=[{id:U.uid(),title,ts:Date.now()},...s.byProfile[id].histories.watch].slice(0,200);return s})}
 
@@ -33,11 +33,11 @@ function kidsFilter(){const {profiles,activeProfileId}=Store.get();const me=prof
 function renderDevices(){const lst=U.el("#devices-list");if(!lst)return;const {devices}=Store.get();lst.innerHTML=devices.length?devices.map(d=>`<div class="kv"><div>${d.name} • <strong>${d.code}</strong></div><button class="btn" data-remove="${d.code}">Remove</button></div>`).join(""):`<p class="text-muted">No devices activated yet.</p>`;U.els("button[data-remove]").forEach(b=>b.addEventListener("click",()=>{const code=b.getAttribute("data-remove");Store.set(s=>{s.devices=s.devices.filter(x=>x.code!==code);return s});renderDevices()}));const hist=U.el("#histories");if(hist){const id=Store.get().activeProfileId||"p1";const hp=Store.get().byProfile[id].histories;const searches=Object.values(hp.search).reduce((a,b)=>a+b.length,0);hist.textContent=`Search entries: ${searches} • Watched: ${hp.watch.length}`}}
 function bindSettings(){U.el("#gen-device")?.addEventListener("click",()=>{const name=(U.el("#device-name")?.value||"My Device").toString();const d={id:U.uid(),name,code:U.code8(),activatedAt:Date.now()};Store.set(s=>{s.devices=[d,...s.devices].slice(0,50);return s});alert(`Activation code for ${d.name}: ${d.code}`);renderDevices()});U.el("#clear-histories")?.addEventListener("click",()=>{Store.set(s=>{const id=s.activeProfileId||"p1";s.byProfile[id].histories={search:{},watch:[]};return s});renderDevices()});const sel=U.el("#theme-select");if(sel){sel.value=Store.get().theme.mode;sel.addEventListener("change",e=>setMode(e.target.value))}U.els(".swatch").forEach(sw=>sw.addEventListener("click",()=>setColors(sw.getAttribute("data-p"),sw.getAttribute("data-a"))));const p=U.el("#pick-primary"),a=U.el("#pick-accent");U.el("#apply-colors")?.addEventListener("click",()=>setColors(p.value,a.value));renderDevices()}
 
-/* Gate */
+/* Gate to profiles */
 function guard(page){const {onboarded,activeProfileId}=Store.get();if(!onboarded||!activeProfileId){if(page!=="profiles"){location.replace("profiles.html?first=1");return false}}return true}
 
-/* Header autohide: NEVER hide at top (<= 12px) */
-function bindHeaderAutohide(){const h=U.el(".header");if(!h)return;let last=window.scrollY||0;window.addEventListener("scroll",()=>{const y=window.scrollY||0;if(y<=12){h.classList.remove("is-hidden");last=y;return}if(y<last-8)h.classList.add("is-hidden");else if(y>last+8)h.classList.remove("is-hidden");last=y},{passive:true})}
+/* Header autohide: never hide at page top (<= 12px). Hide on scroll up, show on scroll down. */
+function bindHeaderAutohide(){const h=U.el(".header");if(!h)return;let last=window.scrollY||0,ticking=false;function onScroll(){const y=window.scrollY||0;if(y<=12){h.classList.remove("is-hidden");last=y;ticking=false;return}if(y<last-8){h.classList.add("is-hidden")}else if(y>last+8){h.classList.remove("is-hidden")}last=y;ticking=false}window.addEventListener("scroll",()=>{if(!ticking){window.requestAnimationFrame(onScroll);ticking=true}}, {passive:true})}
 
 /* Boot */
 document.addEventListener("DOMContentLoaded",()=>{applyTheme();refreshAvatars();bindHeaderAutohide();if(window.lucide&&window.lucide.createIcons)window.lucide.createIcons();const page=document.body.getAttribute("data-page")||"stream";if(!guard(page))return;setActive(page);if(page==="stream"){bindSearch("stream");kidsFilter();U.els(".watch-btn").forEach(b=>b.addEventListener("click",()=>recordWatch(b.getAttribute("data-title"))))}if(page==="food"){bindSearch("food")}if(page==="chat"){bindChat()}if(page==="tickets"){bindSearch("tickets");kidsFilter()}if(page==="playzone"){bindSearch("playzone")}if(page==="profiles"){bindProfiles()}if(page==="settings"){bindSettings()}})

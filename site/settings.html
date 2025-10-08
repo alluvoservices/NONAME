@@ -11,21 +11,25 @@
 <body class="with-rail" data-page="settings">
 <header class="header">
   <div class="header-inner">
-    <a href="settings.html" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
+    <a href="settings.html" class="only-mobile" title="Profile & Settings"><span id="mobile-avatar" class="avatar-tiny">P</span></a>
     <div class="brand"><img src="img/logo.svg" alt="logo"/><div><h1>VibriNova</h1><small class="text-muted">The Digital Multiplex</small></div></div>
-    <div class="header-actions"><a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a></div>
+    <div class="header-actions only-mobile"><a class="icon-btn" href="notifications.html" title="Alerts"><i data-lucide="bell"></i></a></div>
   </div>
 </header>
 <nav class="nav">
   <div class="nav-group profile only-desktop">
     <a href="settings.html" data-page="profile" title="Profile & Settings"><div class="icon-wrap"><span id="sidebar-avatar" class="avatar-tiny">P</span></div><span class="label">Profile</span><span class="underline"></span></a>
   </div>
+  <div class="nav-divider only-desktop"></div>
   <div class="nav-group top">
     <a href="index.html" data-page="stream" title="Stream"><div class="icon-wrap"><i data-lucide="clapperboard"></i></div><span class="label">Stream</span><span class="underline"></span></a>
     <a href="food.html" data-page="food" title="Food"><div class="icon-wrap"><i data-lucide="utensils-crossed"></i></div><span class="label">Food</span><span class="underline"></span></a>
     <a href="chat.html" data-page="chat" title="Chat"><div class="icon-wrap"><i data-lucide="message-square"></i></div><span class="label">Chat</span><span class="underline"></span></a>
     <a href="tickets.html" data-page="tickets" title="Tickets"><div class="icon-wrap"><i data-lucide="ticket"></i></div><span class="label">Tickets</span><span class="underline"></span></a>
     <a href="playzone.html" data-page="playzone" title="Play"><div class="icon-wrap"><i data-lucide="gamepad-2"></i></div><span class="label">Play</span><span class="underline"></span></a>
+  </div>
+  <div class="nav-group end only-desktop">
+    <a href="notifications.html" data-page="notifications" title="Alerts"><div class="icon-wrap"><i data-lucide="bell"></i></div><span class="label">Alerts</span><span class="underline"></span></a>
   </div>
 </nav>
 
@@ -35,21 +39,18 @@
     <section class="card section">
       <h3>Theme mode</h3>
       <div class="kv"><label for="theme-select">Mode</label><select id="theme-select" class="input"><option value="dark">Dark</option><option value="light">Light</option></select></div>
-      <p class="text-muted" style="font-size:12px">UI scales automatically across screen sizes.</p>
     </section>
     <section class="card section">
       <h3>Theme colors</h3>
-      <div class="text-muted" style="font-size:12px">Choose a palette or customize.</div>
       <div class="swatches">
-        <button class="swatch" style="background:linear-gradient(135deg,#6EE7F9,#8B5CF6)" data-p="#6EE7F9" data-a="#8B5CF6" title="Aurora"></button>
-        <button class="swatch" style="background:linear-gradient(135deg,#60A5FA,#34D399)" data-p="#60A5FA" data-a="#34D399" title="Lagoon"></button>
-        <button class="swatch" style="background:linear-gradient(135deg,#FDE68A,#F59E0B)" data-p="#FDE68A" data-a="#F59E0B" title="Sunset"></button>
-        <button class="swatch" style="background:linear-gradient(135deg,#FCA5A5,#EF4444)" data-p="#FCA5A5" data-a="#EF4444" title="Coral"></button>
-        <button class="swatch" style="background:linear-gradient(135deg,#A78BFA,#22D3EE)" data-p="#A78BFA" data-a="#22D3EE" title="Plasma"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#6EE7F9,#8B5CF6)" data-p="#6EE7F9" data-a="#8B5CF6"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#60A5FA,#34D399)" data-p="#60A5FA" data-a="#34D399"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#FDE68A,#F59E0B)" data-p="#FDE68A" data-a="#F59E0B"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#FCA5A5,#EF4444)" data-p="#FCA5A5" data-a="#EF4444"></button>
+        <button class="swatch" style="background:linear-gradient(135deg,#A78BFA,#22D3EE)" data-p="#A78BFA" data-a="#22D3EE"></button>
       </div>
       <div class="picker"><label>Primary <input id="pick-primary" type="color" value="#6EE7F9"/></label><label>Accent <input id="pick-accent" type="color" value="#8B5CF6"/></label><button id="apply-colors" class="btn">Apply</button></div>
     </section>
-    <section class="card section"><h3>Parental control</h3><label class="kv"><span>Kids restrictions</span><input type="checkbox" checked/></label></section>
     <section class="card section"><h3>Activate device</h3><div class="kv"><input id="device-name" class="input" placeholder="Device name" value="My Device"/><button id="gen-device" class="btn-primary btn">Generate 8‑char code</button></div><div id="devices-list" class="mt-2"></div></section>
     <section class="card section"><h3>History</h3><div id="histories" class="text-muted">Search entries: 0 • Watched: 0</div><button id="clear-histories" class="btn mt-2">Clear histories</button></section>
   </div>
